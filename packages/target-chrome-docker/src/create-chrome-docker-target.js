@@ -123,6 +123,10 @@ function createChromeDockerTarget({
     if (dockerNet) {
       dockerArgs.push(`--net=${dockerNet}`);
     }
+
+    // fix for mac on apple silicon
+    dockerArgs.push('--platform=linux/amd64');
+
     dockerArgs.push(chromeDockerImage);
 
     const args = dockerArgs
